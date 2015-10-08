@@ -1,0 +1,4 @@
+*.o
+*.a
+*imgproc*
+*.DS_Store*
