@@ -1,0 +1,19 @@
+#!/bin/sh
+p=`dirname $0`
+cd $p
+
+while true
+do
+echo "按下control + c（^c）结束"
+echo "1、选课列表"
+echo "2、开始选课"
+
+read s
+
+case $s in
+1) open courses.txt ;;
+2) sh xk.sh ;;
+*) echo "无该选项" ;;
+esac
+
+done
