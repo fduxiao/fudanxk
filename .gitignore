@@ -1,4 +1,2 @@
-*.o
-*.a
-*imgproc*
-*.DS_Store*
+/*.DS_Store*
+/fudanxk
