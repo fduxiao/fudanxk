@@ -1,7 +1,6 @@
 package student
 
 import (
-	"fmt"
 	"io"
 	"io/ioutil"
 	"net/http"
@@ -31,6 +30,7 @@ type Student struct {
 var errPattern, _ = regexp.Compile("<div class=\"actionError\">.*?<span>(.*)</span>.*?</div>")
 var profileIDPattern, _ = regexp.Compile("href=\"/xk/stdElectCourse!defaultPage\\.action\\?electionProfile\\.id=(.*?)\"")
 var courseDataPattern, _ = regexp.Compile("\\{id:(\\d*?),no:'(.*?)'")
+var successPattern, _ = regexp.Compile("(.*)选课(success|成功)")
 
 // StuErr : error occurred in the xk process
 type StuErr string
@@ -162,6 +162,12 @@ func (s *Student) SelectCourse(courseCode string) error {
 		return err
 	}
 	warning := alertPattern.FindStringSubmatch(content)
-	fmt.Println(content, warning)
-	return nil
+	if len(warning) == 0 {
+		return StuErr(courseCode + " Unknown Course Selecting Error!")
+	}
+
+	if successPattern.MatchString(warning[1]) {
+		return nil
+	}
+	return StuErr(warning[1])
 }
