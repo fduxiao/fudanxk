@@ -7,4 +7,4 @@ $ source ./setenv.sh
 $ ./fudanxk PTSS110061.02 COURSECODE2 COURSECODE3
 ```
 Windows Users:
-> Double click the setenv.bat. The input `fudanxk.exe PTSS110061.02 COURSECODE2 COURSECODE3`
+> Double click the setenv.bat. Then input `fudanxk.exe PTSS110061.02 COURSECODE2 COURSECODE3`
